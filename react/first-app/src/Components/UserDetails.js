@@ -1,11 +1,16 @@
-import React,{Component} from 'react'
-import Test from './Test'
+import React,{useState} from 'react'
+// import Test from './Test'
 const UserDetails = ({ user={} })=> {
+    const [h1text,setH1Text] = useState("This is demo Component");
     return(
         <div>
             <h3>{user.name}<br/>
             Email: {user.email}<br/>
             Phone Number: {user.phone}</h3>
+            <h1> {h1text}</h1>
+            <button onClick={(e)=>{
+               setH1Text("This is cipher school")
+            }}>Click me!</button>
         </div>
     )
 }

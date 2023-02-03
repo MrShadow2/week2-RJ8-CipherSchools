@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{Component, useState} from "react";
 import UserDetails from "./UserDetails";
 import Test from "./Test";
 // import { Component } from "react";
@@ -29,14 +29,58 @@ import Test from "./Test";
 //     </div>
 
 
-const AllUserList=()=>{
-    const [state,setState] = useState({
-        name:"Arpan"
-    })
-    // state = {
-    //     name:"Priyangshu sSaxena"
-    // };
-    let allUser =[{
+// const AllUserList=()=>{
+//     const [state,setState] = useState({
+//         name:"Arpan"
+//     })
+//     // state = {
+//     //     name:"Priyangshu sSaxena"
+//     // };
+//     let allUser =[{
+//                 name:"john",
+//                 email:"200abc@gmail.com",
+//                 phone:"+91-9171728289"
+//             },
+//         {
+//             name:"arpan",
+//                 email:"abc@gmail.com",
+//                 phone:"+91-0000008289"
+//         }];
+//         let setStateName =(name)=>{
+//             setState({...state,name})
+//         }
+
+//             return (
+//                 <div>
+                    
+//                         {/* The name is{state.name} */}
+//                         <Test name = {state.name} setName={setStateName}/>
+                    
+//                     {allUser.map((user,index)=>(
+//                         <UserDetails key={index} user={user} />
+
+//                     ))}
+//                 </div>
+//             )
+        
+    
+// }
+
+
+//class based
+
+
+class AllUserList extends Component{
+    state = {
+        name:"Priyangshu Saxena"
+    };
+    componentDidMount(){
+        console.log("All user mount")
+    }
+    setStateName = (name) =>{
+        this.setState({...this.state,name});
+    };
+     allUser =[{
                 name:"john",
                 email:"200abc@gmail.com",
                 phone:"+91-9171728289"
@@ -46,26 +90,19 @@ const AllUserList=()=>{
                 email:"abc@gmail.com",
                 phone:"+91-0000008289"
         }];
-        let setStateName =(name)=>{
-            setState({...state,name})
-        }
+    render() {
+        return (
+            <div>
+                <Test name={this.state.name} setName={this.setStateName}/>
+                {this.allUser.map((user,index)=>{
+                    <UserDetails key={index} user={user}/>
+                })}
+            </div>
+        )
+    }   
 
-            return (
-                <div>
-                    
-                        {/* The name is{state.name} */}
-                        <Test name = {state.name} setName={setStateName}/>
-                    
-                    {allUser.map((user,index)=>(
-                        <UserDetails key={index} user={user} />
 
-                    ))}
-                </div>
-            )
-        
-    
 }
-
 
 
 
